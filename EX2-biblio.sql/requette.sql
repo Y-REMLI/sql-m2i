@@ -39,6 +39,7 @@ SELECT titre,prix AS minus FROM livres ORDER BY prix LIMIT 1;
 -- 10.Quelle requête utiliser pour sélectionner uniquement les 3 premiers résultats sans le tout premier de la table livres ?
 
 SELECT * FROM livres LIMIT 3;
+-- SELECT * FROM livres LIMIT 3 OFFSET 1;
 
 -- 12.Renommer les champs `titre` en `title`, `auteur` en `author` , `prix` en `price`,
 
@@ -52,3 +53,5 @@ DESC livres
 
 ALTER TABLE livres ADD COLUMN published_year VARCHAR(50) ;
 UPDATE livres SET published_year="2000";
+
+-- ALTER TABLE livres ADD COLUMN published_year YEAR DEFAULT 2000;
