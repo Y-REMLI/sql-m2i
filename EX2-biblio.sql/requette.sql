@@ -18,6 +18,7 @@ SELECT titre FROM livres ORDER BY prix DESC;
 -- 6.Quelle requête utiliser pour récupérer le prix du livre le plus élevé de la table livres ?
 
 SELECT titre, prix FROM livres ORDER BY prix DESC LIMIT 1;
+--SELECT titre,MAX(pirx) FROM ...
 
 -- 7.Quelle requête utiliser pour récupérer les livres de la table livres qui ont un prix compris entre 20 et 22 ?
 
@@ -25,8 +26,12 @@ SELECT titre,prix FROM livres WHERE prix BETWEEN 20 AND 22;
 
 -- 8.Quelle requête utiliser pour récupérer tous les livres de la table livres à l'exception de celui portant la valeur pour la colonne isbn : 2092589547 ?
 -- FAUX
-SELECT * FROM livres WHERE isnb NOT IN (20);
-
+SELECT * FROM livres WHERE isnb NOT IN (2092589547);
+-- Where not isnb=2092589547   ATT: VARCHAR ou INT OU LONG
+-- isnb<>2092589547
+SELECT * FROM livres 
+EXCEPT 
+SELECT * FROM livres WHERE isnb = 2092589547;
 -- 9.Quelle requête utiliser pour récupérer le prix du livre le moins élevé de la table livres en renommant la colonne dans les résultats par minus ?
 
 SELECT titre,prix AS minus FROM livres ORDER BY prix LIMIT 1;
