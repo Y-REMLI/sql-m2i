@@ -95,4 +95,7 @@ select * from orders INNER JOIN clients ON orders.client_id=clients.id;
 -- Solution 2
 select company_name,type_presta,designation from orders INNER JOIN clients ON orders.client_id=clients.id WHERE clients.id=2 AND type_presta="Formation";
 
+-- Afficher les noms et contacts de tous les contacts des clients qui ont sollicité un coaching
 
+
+select distinct type_presta,company_name,first_name,last_name,email,phone from clients INNER JOIN orders ON orders.client_id=clients.id WHERE type_presta="Coaching";
