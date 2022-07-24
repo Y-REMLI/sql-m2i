@@ -81,3 +81,18 @@ VALUES
 ("M2I Formation","Julien","Lamard","lamard@mail.com","06 11 22 33 44","abc","xyz","Paris","France",1),
 ("ATOS","Jack","Ma","Ma@mail.com",'06 12 45 78 96','sdf',"zer","Lyon","France",0),
 ("Sopra Steria","Pett","David","David@mail.com","06 23 56 89 52","tyu","mlk","Lille","France",0);
+
+
+-- join he two tables
+
+select * from orders INNER JOIN clients ON orders.client_id=clients.id;
+
+
+-- Afficher toutes les formations sollicités par le client M2i formation M2u information
+
+-- Solution 1
+ select company_name,type_presta,designation from orders INNER JOIN clients ON orders.client_id=clients.id WHERE type_presta="Formation";
+-- Solution 2
+select company_name,type_presta,designation from orders INNER JOIN clients ON orders.client_id=clients.id WHERE clients.id=2 AND type_presta="Formation";
+
+
