@@ -95,7 +95,17 @@ select * from orders INNER JOIN clients ON orders.client_id=clients.id;
 -- Solution 2
 select company_name,type_presta,designation from orders INNER JOIN clients ON orders.client_id=clients.id WHERE clients.id=2 AND type_presta="Formation";
 
--- Afficher les noms et contacts de tous les contacts des clients qui ont sollicité un coaching
+--3 Afficher les noms et contacts de tous les contacts des clients qui ont sollicité un coaching
 
 
 select distinct type_presta,company_name,first_name,last_name,email,phone from clients INNER JOIN orders ON orders.client_id=clients.id WHERE type_presta="Coaching";
+
+--4 Afficher les noms et contacts de tous les contacts des clients qui ont sollicité un coaching pour les accompagnements React.js
+
+select distinct type_presta,company_name,first_name,last_name,email,phone from clients INNER JOIN orders ON orders.client_id=clients.id WHERE type_presta="Coaching" AND designation="React.js";
+
+--5 Pour chacune des demandes de formation, afficher le prix UHT et prix TTC en se basant sur le unité Price(TJM) et le nombre de jours de prestation tout en sachant que la TVA est de 20%.
+
+--6 Lister toutes les prestations qui sont confirmés et qui vont rapporter plus 30.000€
+
+select type_presta,company_name from clients INNER JOIN orders ON clients.id=orders.client_id WHERE orders.state=2 AND total_exclude_taxe>=30000;
