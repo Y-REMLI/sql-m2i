@@ -71,3 +71,13 @@ VALUES
 ("Coaching","React Teachead",1,50,800,1),
 ("Coaching","Jakarta EE",2,3,1000.0,2),
 ("Coaching","Angular Techlead",2,3,1200.0,0);
+
+
+-- insertion into table clients:
+
+INSERT INTO clients (company_name,first_name,last_name,email,phone,address,zip_code,city,country,state)
+VALUES
+("Capgemini","Fabrice","Martin","martin@mail.com","06 56 85 84 33","abc","xyz","Nantes","France",0),
+("M2I Formation","Julien","Lamard","lamard@mail.com","06 11 22 33 44","abc","xyz","Paris","France",1),
+("ATOS","Jack","Ma","Ma@mail.com",'06 12 45 78 96','sdf',"zer","Lyon","France",0),
+("Sopra Steria","Pett","David","David@mail.com","06 23 56 89 52","tyu","mlk","Lille","France",0);
