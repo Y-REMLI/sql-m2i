@@ -33,3 +33,11 @@ INNER JOIN commentaires ON commentaires.photo_id=photos.photo_id
 INNER JOIN utilisateurs ON utilisateurs.user_id=commentaires.user_id
 GROUP BY user_name;
 
+--9 A l'exercice précedent afficher aussi le nom de l'utilisateur qui a commenté ses propres photos
+
+
+SELECT url,commentaire,user_name FROM photos 
+INNER JOIN commentaires ON commentaires.photo_id=photos.photo_id 
+INNER JOIN utilisateurs ON utilisateurs.user_id=commentaires.user_id
+GROUP BY user_name;
+
