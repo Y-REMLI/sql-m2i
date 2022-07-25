@@ -41,3 +41,7 @@ INNER JOIN commentaires ON commentaires.photo_id=photos.photo_id
 INNER JOIN utilisateurs ON utilisateurs.user_id=commentaires.user_id
 GROUP BY user_name;
 
+
+--10 Le nombre de likes pour la photo d’ID 4
+
+SELECT COUNT(like_id) FROM likes where photo_id=4; 
