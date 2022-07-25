@@ -126,3 +126,7 @@ select distinct type_presta,company_name,designation,first_name,last_name,email,
 --6 Lister toutes les prestations qui sont confirmés et qui vont rapporter plus 30.000€
 
 select type_presta,company_name from clients INNER JOIN orders ON clients.id=orders.client_id WHERE orders.state=2 AND total_exclude_taxe>=30000;
+
+--7 Afficher le total des coaching et le total des formation en affichant aussi dans le résultat les colonnes type_presta et total_with_taxe7
+
+select type_presta,SUM(total_with_taxe) FROM orders GROUP BY type_presta;
