@@ -15,6 +15,23 @@ total_with_taxe INT NOT NULL,
 state INT NOT NULL);
 
 
+
+-- correction Florian Vié : Create table orders
+CREATE TABLE orders(
+    id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    type_presta VARCHAR(50) NOT NULL,
+    designation VARCHAR(50) NOT NULL,
+    client_id INT NOT NULL,
+    nb_days INT NOT NULL,
+    unit_price FLOAT NOT NULL,
+    total_exclude_taxe FLOAT AS (nb_days * unit_price),
+    -- total_exclude_taxe FLOAT REAL GENERATED ALWAYS AS (nb_days * unit_price) STORED,
+    total_with_taxe FLOAT AS (total_exclude_taxe * 1.20),
+    -- Check state value : https://www.w3schools.com/sql/sql_check.asp
+    state INT CHECK (state IN (0, 1, 2)) NOT NULL,
+    FOREIGN KEY(client_id) REFERENCES clients(id) ON DELETE RESTRICT
+);
+
 -- Coorection mohamad amine
 
 CREATE TABLE IF NOT EXISTS orders(
@@ -102,7 +119,7 @@ select distinct type_presta,company_name,first_name,last_name,email,phone from c
 
 --4 Afficher les noms et contacts de tous les contacts des clients qui ont sollicité un coaching pour les accompagnements React.js
 
-select distinct type_presta,company_name,first_name,last_name,email,phone from clients INNER JOIN orders ON orders.client_id=clients.id WHERE type_presta="Coaching" AND designation="React.js";
+select distinct type_presta,company_name,designation,first_name,last_name,email,phone from clients INNER JOIN orders ON orders.client_id=clients.id WHERE type_presta="Coaching" AND designation like "React%";
 
 --5 Pour chacune des demandes de formation, afficher le prix UHT et prix TTC en se basant sur le unité Price(TJM) et le nombre de jours de prestation tout en sachant que la TVA est de 20%.
 
