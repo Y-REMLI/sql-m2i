@@ -11,3 +11,16 @@ SELECT commentaire,url FROM commentaires INNER JOIN photos ON commentaires.photo
 
 
 SELECT url,user_name FROM photos INNER JOIN utilisateurs ON utilisateurs.user_id=photos.user_id LIMIT 20;
+
+--7 Trouver tous les commentaires pour la photo d'id 3, avec le username de l'utilisateur qui a commenté
+
+SELECT commentaire, user_name 
+FROM 
+commentaires 
+INNER JOIN 
+utilisateurs 
+utilisateurs.user_id=commentaires.user_id
+INNER JOIN
+photos
+utilisateurs.user_id=photos.user_id
+HAVING photos.photo_id=3;
