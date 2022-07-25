@@ -1,0 +1,14 @@
+Tableau 1: utilisateurs
+(user_id'PK', user_name, nom, prenom, email, avatar, bio)
+
+Tableau 2 : photos
+
+(photo_id'PK',user_id'FK', url)
+
+Tableau 3 : commentaires
+
+(commtaire_id(PK),user_id'FK', photo_id'FK', commentaire)
+
+Tableau 4 : likes
+
+(like_id'PK',user_id'FK', photo_id'FK', commentaire-id'FK', like_NoLike)
