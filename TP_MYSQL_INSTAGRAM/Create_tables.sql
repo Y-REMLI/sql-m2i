@@ -1,6 +1,5 @@
--- create database
+--2  CREAT TABLES
 
-CREATE DATABASE TP_MySQL_LDD
 
 -- Create table "Utilisateurs"
  CREATE TABLE utilisateurs(
@@ -38,9 +37,9 @@ CREATE TABLE commentaires(
 CREATE TABLE likes(
     like_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     user_id INT NOT NULL,
-    photo_id INT,
-    commentaire_id INT, -- pet etre NULL si le like est pour une photo rst non un commentaire
-    like_NoLike BOOLEAN,
+    photo_id INT ,
+    commentaire_id INT , -- pet etre NULL si le like est pour une photo rst non un commentaire
+    like_NoLike INT CHECK (like_NoLike IN (0, 1)),-- BOOLEAN,
     FOREIGN KEY (user_id) REFERENCES utilisateurs(user_id),
     FOREIGN KEY (photo_id) REFERENCES photos(photo_id),
     FOREIGN KEY (commentaire_id) REFERENCES commentaires(commentaire_id)
